@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { BASE_URL } from "../../services/apiMovies";
 import EmptyCard from "../../ui/EmptyCard";
 import { useNavigate } from "react-router";
 import { useMovieDetails } from "./useMovieDetails";

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchMovieDetail } from "../../services/apiMovies";
+import { getMovieById } from "../../services/apiMovies";
 
 export function useMovieDetails(id) {
   const {
@@ -8,7 +8,7 @@ export function useMovieDetails(id) {
     error,
   } = useQuery({
     queryKey: ["movieDetails", id],
-    queryFn: () => fetchMovieDetail({ id }),
+    queryFn: () => getMovieById({ id }),
   });
 
   return { movieDetail, isLoading, error };
