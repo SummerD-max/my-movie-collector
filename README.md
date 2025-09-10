@@ -1,3 +1,3 @@
-# The Wild Oasis
+# My-Movie-Collector
 
 Main project of Duan.
