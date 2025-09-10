@@ -1,5 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
-import AppLayout from "./ui/Applayout";
+import AppLayout from "./ui/AppLayout";
 import MovieResult from "./pages/MovieResult";
 import Welcome from "./pages/Welcome";
 import MovieDetailPage from "./pages/MovieDetailPage";
