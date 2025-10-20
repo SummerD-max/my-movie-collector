@@ -1,0 +1,3 @@
+# filepath: public/_headers
+/assets/*
+  Content-Type: application/javascript
