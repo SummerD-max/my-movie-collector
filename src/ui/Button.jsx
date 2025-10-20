@@ -11,7 +11,7 @@ function Button({ onClick, children, type = "button" }) {
     <button
       onClick={onClick}
       type={type}
-      className={`cursor-pointer rounded-full px-8 py-4 text-base transition-all duration-300 ${buttonClass}`}
+      className={`flex cursor-pointer items-center gap-2 rounded-full px-8 py-4 text-base transition-all duration-300 ${buttonClass}`}
     >
       {children}
     </button>

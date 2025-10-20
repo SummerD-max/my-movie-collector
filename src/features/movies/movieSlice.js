@@ -117,9 +117,11 @@ const getIsLoading = (state) => state.movieReducer.isLoading;
 const getError = (state) => state.movieReducer.error;
 const getLikedMovies = (state) => state.movieReducer.likedMovies;
 const IsInLikedMovies = (movie) => (state) => {
-  return state.movieReducer.likedMovies.some(
-    (likedMovie) => likedMovie.imdbID === movie.imdbID,
-  );
+  if (!movie) return false;
+  // console.log(state.movieReducer.likedMovies);
+  return state.movieReducer.likedMovies.some((likedMovie) => {
+    return likedMovie.imdbID === movie.imdbID;
+  });
 };
 
 export { getMovies, getIsLoading, getError, getLikedMovies, IsInLikedMovies };

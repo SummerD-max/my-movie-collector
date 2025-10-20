@@ -24,12 +24,12 @@ function Search() {
   return (
     <>
       <form>
-        <span
+        <div
           htmlFor="search"
-          className="mb-2 cursor-default text-xl font-semibold text-purple-500"
+          className="mb-2 bg-gradient-to-bl from-purple-500 to-pink-500 bg-clip-text text-xl font-semibold text-transparent select-none"
         >
           Search any movie you want
-        </span>
+        </div>
         <div className="flex max-w-3xl flex-col gap-2 sm:flex-row">
           <input
             id="search"
@@ -41,7 +41,7 @@ function Search() {
           />
 
           <button
-            className="cursor-pointer rounded-lg bg-purple-400 px-4 py-2 text-purple-50 transition-all duration-300 hover:bg-purple-500"
+            className="cursor-pointer rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 font-semibold text-white transition-all duration-300 hover:from-purple-600 hover:to-pink-600 hover:shadow-lg focus:ring-2 focus:ring-purple-600/50 focus:ring-offset-2 focus:outline-none"
             onClick={handleClick}
           >
             Search now!
