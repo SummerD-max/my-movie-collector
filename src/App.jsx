@@ -4,6 +4,7 @@ import MovieResult from "./pages/MovieResult";
 import Welcome from "./pages/Welcome";
 import MovieDetailPage from "./pages/MovieDetailPage";
 import Favorites from "./features/movies/Favorites";
+import PageNotFount from "./pages/PageNotFount";
 
 function App() {
   return (
@@ -12,10 +13,10 @@ function App() {
         <Route element={<AppLayout />}>
           <Route index element={<Navigate to="/welcome" />} />
           <Route path="/welcome" element={<Welcome />} />
-          <Route path="/movieResult/:movieName" element={<MovieResult />} />
+          <Route path="/movieResult" element={<MovieResult />} />
           <Route path="/movieDetail/:imdbId" element={<MovieDetailPage />} />
           <Route path="/favorites" element={<Favorites />} />
-          <Route path="*" element={<Navigate to="/welcome" />} />
+          <Route path="*" element={<PageNotFount />} />
         </Route>
       </Routes>
     </BrowserRouter>

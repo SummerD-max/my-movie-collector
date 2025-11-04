@@ -1,10 +1,8 @@
 import EmptyCard from "../../ui/EmptyCard";
-import { useNavigate } from "react-router";
+import { Link } from "react-router";
 import { useMovieDetails } from "./useMovieDetails";
 
 function MovieCard({ movie }) {
-  const navigate = useNavigate();
-
   const { movieDetail, isLoading, error } = useMovieDetails(movie.imdbID);
 
   if (isLoading) return <EmptyCard />;
@@ -25,9 +23,9 @@ function MovieCard({ movie }) {
   }
 
   return (
-    <li
+    <Link
       className="flex cursor-pointer items-center gap-3 overflow-hidden rounded-xl bg-purple-100 transition-all duration-300 hover:scale-105"
-      onClick={() => navigate(`/movieDetail/${imdbId}`)}
+      to={`/movieDetail/${imdbId}`}
     >
       <img
         src={poster}
@@ -49,7 +47,7 @@ function MovieCard({ movie }) {
           {movieDescription}
         </p>
       </div>
-    </li>
+    </Link>
   );
 }
 

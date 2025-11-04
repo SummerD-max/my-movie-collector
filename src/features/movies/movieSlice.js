@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { searchMovieByName } from "../../services/apiMovies";
 
 const initialState = {
+  query: "",
   movies: [],
   isLoading: false,
   error: null,
@@ -12,12 +13,15 @@ const movieSlice = createSlice({
   name: "movieSlice",
   initialState,
   reducers: {
-    movieLoading(state) {
+    movieLoading(state, action) {
+      state.error = null;
       state.isLoading = true;
+      state.query = action.payload;
     },
     movieError(state, action) {
       state.isLoading = false;
       state.error = action.payload;
+      state.movies = [];
     },
     movieSuccess(state, action) {
       state.isLoading = false;
@@ -48,7 +52,7 @@ const movieSlice = createSlice({
 export const fetchMoviesByName = (movieName) => {
   return async (dispatch, getState) => {
     try {
-      dispatch(movieLoading());
+      dispatch(movieLoading(movieName));
       const movies = await searchMovieByName({ title: movieName });
       console.log(movies);
       if (!movies) {
@@ -113,6 +117,7 @@ export default movieReducer;
 
 // Selector functions
 const getMovies = (state) => state.movieReducer.movies;
+const getMoviesCount = (state) => state.movieReducer.movies.length;
 const getIsLoading = (state) => state.movieReducer.isLoading;
 const getError = (state) => state.movieReducer.error;
 const getLikedMovies = (state) => state.movieReducer.likedMovies;
@@ -123,5 +128,14 @@ const IsInLikedMovies = (movie) => (state) => {
     return likedMovie.imdbID === movie.imdbID;
   });
 };
+const getMovieQuery = (state) => state.movieReducer.query;
 
-export { getMovies, getIsLoading, getError, getLikedMovies, IsInLikedMovies };
+export {
+  getMovies,
+  getIsLoading,
+  getError,
+  getLikedMovies,
+  IsInLikedMovies,
+  getMoviesCount,
+  getMovieQuery,
+};

@@ -1,10 +1,15 @@
 import { useSelector } from "react-redux";
 import { getLikedMovies } from "./movieSlice";
-import MovieDetail from "./MovieDetail";
 import MovieCard from "./MovieCard";
+import { useLikedMoviesDetail } from "./useLikedMoviesDetail";
+import Loader from "../../ui/Loader";
 
 function Favorites() {
   const likedMovies = useSelector(getLikedMovies);
+  const { isLoading, error } = useLikedMoviesDetail(likedMovies);
+
+  if (isLoading) return <Loader />;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div>

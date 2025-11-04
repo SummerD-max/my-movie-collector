@@ -1,24 +1,16 @@
-import { useDispatch } from "react-redux";
-import { fetchMoviesByName } from "../movies/movieSlice";
-import { useState } from "react";
 import { useNavigate } from "react-router";
 
 function Search() {
-  const [query, setQuery] = useState("interstellar");
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  function handleChange(e) {
-    setQuery(e.target.value);
-  }
 
   function handleClick(e) {
     e.preventDefault();
-    console.log(query);
+    const form = e.target.closest("form");
+    const input = form.querySelector("input[type='text']");
+    const query = input.value.trim();
+    if (!query) return;
     console.log("Searching for:", query);
-    setQuery("");
-    dispatch(fetchMoviesByName(query));
-    navigate(`/movieResult/${query}`);
+    navigate(`/movieResult?query=${query}`);
   }
 
   return (
@@ -35,8 +27,6 @@ function Search() {
             id="search"
             type="text"
             placeholder="Search..."
-            value={query}
-            onChange={handleChange}
             className="flex-1 rounded-lg border-3 border-purple-500 bg-purple-100 px-4 py-2 text-purple-500 transition-all duration-300 focus:bg-purple-200 focus:ring-2 focus:ring-purple-600/50 focus:ring-offset-2 focus:outline-none"
           />
 
